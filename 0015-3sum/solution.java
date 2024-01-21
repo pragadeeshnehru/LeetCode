@@ -29,9 +29,9 @@ class Solution {
                     int lastLowOccurrence = nums[low];
                     int lastHighOccurrence = nums[high];
 
-                    while (low < high && nums[low] == lastLowOccurrence) {
+
                         low++;
-                    }
+                    
 
                     while (low < high && nums[high] == lastHighOccurrence) {
                         high--;
