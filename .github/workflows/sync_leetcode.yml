@@ -17,3 +17,4 @@ jobs:
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           commit-header: '[LeetCode Sync]'
+          destination-folder: problems
