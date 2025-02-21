@@ -1,25 +1,25 @@
 class Solution {
-  public int compress(char[] chars) {
-    int ans = 0; 
-    for (int i = 0; i < chars.length;) {
-      final char letter = chars[i];
-      int count = 0; 
-
-      while (i < chars.length && chars[i] == letter) {
-        ++count;
-        ++i;
-      }
-
-      chars[ans++] = letter;
-
-      if (count > 1) {
- 
-        for (final char c : String.valueOf(count).toCharArray()) {
-          chars[ans++] = c;
+    public int compress(char[] chars) {
+        Stack<Character> s = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        for(char c : chars) {
+            if(!s.isEmpty() && s.peek() != c) {
+                sb.append(s.peek());
+                if(s.size() > 1) sb.append(s.size());
+                s.clear();
+            }
+            s.push(c);
         }
-      }
-    }
 
-    return ans;
-  }
+        if(!s.isEmpty()) {
+            sb.append(s.peek());
+            if(s.size() > 1) sb.append(s.size());
+            s.clear();
+        }
+
+        for(int i=0;i<sb.length();i++) {
+            chars[i] = sb.charAt(i);
+        }
+        return sb.length();
+    }
 }
